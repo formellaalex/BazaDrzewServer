@@ -1,0 +1,74 @@
+<?php
+
+namespace drzewaDbBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Pictures
+ *
+ * @ORM\Table(name="pictures", indexes={@ORM\Index(name="pictures_FKIndex1", columns={"idusers"}), @ORM\Index(name="pictures_FKIndex2", columns={"idtree_objects"})})
+ * @ORM\Entity
+ */
+class Pictures
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="filename", type="string", length=255, nullable=true)
+     */
+    private $filename;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="picture_description", type="text", length=65535, nullable=true)
+     */
+    private $pictureDescription;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="adddate", type="datetime", nullable=false)
+     */
+    private $adddate = 'CURRENT_TIMESTAMP';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="view_count", type="integer", nullable=false)
+     */
+    private $viewCount = '0';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idpictures", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idpictures;
+
+    /**
+     * @var \drzewaDbBundle\Entity\TreeObjects
+     *
+     * @ORM\ManyToOne(targetEntity="drzewaDbBundle\Entity\TreeObjects")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idtree_objects", referencedColumnName="idtree_objects")
+     * })
+     */
+    private $idtreeObjects;
+
+    /**
+     * @var \drzewaDbBundle\Entity\Users
+     *
+     * @ORM\ManyToOne(targetEntity="drzewaDbBundle\Entity\Users")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idusers", referencedColumnName="idusers")
+     * })
+     */
+    private $idusers;
+
+
+}
+

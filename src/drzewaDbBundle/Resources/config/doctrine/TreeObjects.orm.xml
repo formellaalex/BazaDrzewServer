@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="drzewaDbBundle\Entity\TreeObjects" table="tree_objects">
+    <indexes>
+      <index name="tree_objects_FKIndex1" columns="idusers"/>
+      <index name="tree_objects_FKIndex2" columns="iddistricts"/>
+      <index name="idspecial_place" columns="idspecial_place"/>
+    </indexes>
+    <id name="idtreeObjects" type="integer" column="idtree_objects">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idspecialPlace" type="integer" column="idspecial_place" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">-1</option>
+      </options>
+    </field>
+    <field name="namePolish" type="string" column="name_polish" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nameLatin" type="string" column="name_latin" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="location" type="text" column="location" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="street" type="string" column="street" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="city" type="string" column="city" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="locationLongitude" type="float" column="location_longitude" precision="10" scale="0" nullable="true"/>
+    <field name="locationLatitude" type="float" column="location_latitude" precision="10" scale="0" nullable="true"/>
+    <field name="description" type="text" column="description" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="blocked" type="integer" column="blocked" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="adddate" type="string" column="adddate" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <field name="isPomnik" type="integer" column="is_pomnik" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="aktualizacja" type="date" column="aktualizacja" nullable="true"/>
+    <field name="inGreenhouse" type="integer" column="in_greenhouse" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="icon" type="integer" column="icon" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">Opis rodzaju ikony 1- lisc(def) 2-conifer 3 ginko</option>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="unknownTree" type="integer" column="unknown_tree" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="nonexistent" type="integer" column="nonexistent" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">Opisuje czy drzewo istnieje (na potzreby starych drzew oraz z powodów zmian np. wichura)</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="viewCount" type="integer" column="view_count" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="postOnFb" type="boolean" column="post_on_fb" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <many-to-one field="iddistricts" target-entity="Districts" fetch="EXTRA_LAZY">
+      <join-columns>
+        <join-column name="iddistricts" referenced-column-name="iddistricts"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idusers" target-entity="Users" fetch="EXTRA_LAZY">
+      <join-columns>
+        <join-column name="idusers" referenced-column-name="idusers"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

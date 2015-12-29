@@ -1,0 +1,7 @@
+login:
+    path:     /login
+    defaults: { _controller: UsersBundle:Login:signIn }
+
+check_token:
+    path:     /check_user
+    defaults: {_controller: UsersBundle:Login:checkToken}

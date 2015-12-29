@@ -1,0 +1,14 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: sql.reichel.nazwa.pl
+    database_port: 3305
+    database_name: reichel_7
+    database_user: reichel_7
+    database_password: BazaDrzew2014
+    mailer_transport: smtp
+    mailer_host: localhost
+    mailer_user: null
+    mailer_password: null
+    secret: 71ab2cc09c213d15db08cdbb21d5bb547483e8ce
+    database_path: null
+    database_memory: null

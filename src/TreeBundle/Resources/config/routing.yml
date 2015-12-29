@@ -1,0 +1,27 @@
+get_trees:
+    path:     /get_trees
+    defaults: { _controller: TreeBundle:Tree:getTrees }
+
+get_tree:
+    path:     /get_tree/{id}
+    defaults: { _controller: TreeBundle:Tree:getTree }
+
+add_tree:
+    path:     /add_tree
+    defaults: { _controller: TreeBundle:Tree:addTree }
+
+add_picture:
+    path:     /add_picture
+    defaults: { _controller: TreeBundle:Picture:addPicture }
+
+add_place:
+    path:     /add_place
+    defaults: { _controller: TreeBundle:SpecialPlace:addPlace }
+
+get_place:
+    path:     /get_place/{lat}/{lon}
+    defaults: {_controller: TreeBundle:SpecialPlace:getPlace }
+
+delete_tree:
+    path:     /delete_tree/{id}
+    defaults: {_controller: TreeBundle:Tree:deleteTree}

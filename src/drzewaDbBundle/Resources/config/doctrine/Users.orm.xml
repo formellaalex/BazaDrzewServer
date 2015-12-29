@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="drzewaDbBundle\Entity\Users" table="users">
+    <indexes>
+      <index name="idacl_users" columns="idacl_users"/>
+    </indexes>
+    <id name="idusers" type="integer" column="idusers">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="login" type="string" column="login" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="upassword" type="string" column="upassword" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="email" type="string" column="email" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="additionalInfo" type="text" column="additional_info" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="pictureSignature" type="string" column="picture_signature" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="pictureSignatureType" type="integer" column="picture_signature_type" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="showEmail" type="boolean" column="show_email" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="isConfirm" type="boolean" column="is_confirm" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="confirmationNumber" type="string" column="confirmation_number" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="adddate" type="datetime" column="adddate" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <field name="wwwpage" type="string" column="wwwpage" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="sendemail" type="integer" column="sendemail" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="token" type="string" column="token" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+     <field name="token_expire" type="datetime" column="token_expire" nullable="true">
+    </field>
+    <many-to-one field="idaclUsers" target-entity="AclUsers" fetch="LAZY">
+      <join-columns>
+        <join-column name="idacl_users" referenced-column-name="idacl_users"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

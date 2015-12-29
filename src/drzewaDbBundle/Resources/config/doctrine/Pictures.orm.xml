@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="drzewaDbBundle\Entity\Pictures" table="pictures">
+    <indexes>
+      <index name="pictures_FKIndex1" columns="idusers"/>
+      <index name="pictures_FKIndex2" columns="idtree_objects"/>
+    </indexes>
+    <id name="idpictures" type="integer" column="idpictures">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="filename" type="string" column="filename" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="pictureDescription" type="text" column="picture_description" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="adddate" type="datetime" column="adddate" nullable="false">
+      <options>
+        <option name="comment">Data dodania modyfikacji ...</option>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <field name="viewCount" type="integer" column="view_count" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <many-to-one field="idtreeObjects" target-entity="TreeObjects" fetch="LAZY">
+      <join-columns>
+        <join-column name="idtree_objects" referenced-column-name="idtree_objects"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idusers" target-entity="Users" fetch="LAZY">
+      <join-columns>
+        <join-column name="idusers" referenced-column-name="idusers"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

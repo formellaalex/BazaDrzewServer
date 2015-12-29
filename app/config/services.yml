@@ -1,0 +1,11 @@
+
+parameters:
+#    parameter_name: value
+
+services:
+    JSONSerializerService:
+        class: Services\JSONSerializerService
+
+    TokenAuthService:
+        class: Services\TokenAuthService
+        arguments: ["@doctrine.orm.entity_manager"]

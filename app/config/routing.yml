@@ -1,0 +1,11 @@
+users:
+    resource: "@UsersBundle/Resources/config/routing.yml"
+    prefix:   /
+
+tree:
+    resource: "@TreeBundle/Resources/config/routing.yml"
+    prefix:   /
+
+drzewa_db:
+    resource: "@drzewaDbBundle/Resources/config/routing.yml"
+    prefix:   /

@@ -1,0 +1,120 @@
+<?php
+
+namespace drzewaDbBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Users
+ *
+ * @ORM\Table(name="users", indexes={@ORM\Index(name="idacl_users", columns={"idacl_users"})})
+ * @ORM\Entity
+ */
+class Users
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="login", type="string", length=45, nullable=true)
+     */
+    private $login;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="upassword", type="string", length=100, nullable=true)
+     */
+    private $upassword;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="additional_info", type="text", length=65535, nullable=true)
+     */
+    private $additionalInfo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="picture_signature", type="string", length=100, nullable=true)
+     */
+    private $pictureSignature;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="picture_signature_type", type="integer", nullable=false)
+     */
+    private $pictureSignatureType = '0';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="show_email", type="boolean", nullable=false)
+     */
+    private $showEmail = '0';
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_confirm", type="boolean", nullable=false)
+     */
+    private $isConfirm = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="confirmation_number", type="string", length=255, nullable=true)
+     */
+    private $confirmationNumber;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="adddate", type="datetime", nullable=false)
+     */
+    private $adddate = 'CURRENT_TIMESTAMP';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="wwwpage", type="string", length=255, nullable=true)
+     */
+    private $wwwpage;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="sendemail", type="integer", nullable=false)
+     */
+    private $sendemail = '1';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idusers", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idusers;
+
+    /**
+     * @var \drzewaDbBundle\Entity\AclUsers
+     *
+     * @ORM\ManyToOne(targetEntity="drzewaDbBundle\Entity\AclUsers")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idacl_users", referencedColumnName="idacl_users")
+     * })
+     */
+    private $idaclUsers;
+
+
+}
+

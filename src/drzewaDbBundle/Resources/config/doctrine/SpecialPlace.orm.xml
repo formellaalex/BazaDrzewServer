@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="drzewaDbBundle\Entity\SpecialPlace" table="special_place">
+    <indexes>
+      <index name="pictures_FKIndex1" columns="idusers"/>
+      <index name="iddistricts" columns="iddistricts"/>
+    </indexes>
+    <id name="idspecialPlace" type="integer" column="idspecial_place">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="filename" type="string" column="filename" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="name" type="string" column="name" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="description" type="text" column="description" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="locationLongitude" type="float" column="location_longitude" precision="10" scale="0" nullable="true"/>
+    <field name="locationLatitude" type="float" column="location_latitude" precision="10" scale="0" nullable="true"/>
+    <field name="city" type="string" column="city" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="street" type="string" column="street" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="iddistricts" target-entity="Districts" fetch="LAZY">
+      <join-columns>
+        <join-column name="iddistricts" referenced-column-name="iddistricts"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idusers" target-entity="Users" fetch="LAZY">
+      <join-columns>
+        <join-column name="idusers" referenced-column-name="idusers"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
